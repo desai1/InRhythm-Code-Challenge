@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="AlbumFinder">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+<div class="container" ng-controller="AlbumsController as mainVm">
+    <div class="row">
+        <div class="col-md-6">
+            <div>
+    <input type="text" placeholder="enter artist" ng-model="mainVm.searchPhrase">
+    <button class="btn btn-default" ng-click="mainVm.isData()">Search</button>
+            </div>
+            </div>
+    </div>
+
+    <h2 ng-if="mainVm.heading"> Number of Results : {{mainVm.myData.resultCount}}</h2>
+
+    <div class="row">
+        <div class="col-md-12">
+    <div class="albums-container">
+        <div class="main" ng-repeat="a in mainVm.myData.results">
+            <a target="_blank" ng-href="{{a.collectionViewUrl}}">
+                <img ng-src="{{a.artworkUrl100}}" alt="Forest">
+                <div class="content">{{a.collectionName}}</div></a>
+        </div>
+    </div>
+        </div>
+        </div>
+        </div>
+
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="script.js"></script>
+<script src="controller.js"></script>
+<script src="service.js"></script>
+</body>
+
+</html>
